@@ -107,4 +107,6 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias ls='exa -la'
-alias q='exit'
+alias bat-full='echo 0 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode && echo "Full charge mode ON"'
+alias bat-save='echo 1 | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode && echo "Conservation mode ON"'
+alias bat-status='cat /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode | grep -q 1 && echo "Conservation mode" || echo "Full charge mode"'
